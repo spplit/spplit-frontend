@@ -3,6 +3,7 @@ import React from 'react';
 import Settings from './Settings';
 import MyNameCard from './MyNameCard';
 
+// function for nested routing
 function MyPage({ match }) {
     return (
         <>
