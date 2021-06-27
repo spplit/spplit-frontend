@@ -18,25 +18,30 @@ code {
 
 @font-face {
   font-family: "assistant-regular";
-  src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@400&display=swap') format("woff");
+  src: url('./styles/fonts/Assistant-Regular.ttf') format("truetype"),
+    url('./styles/fonts/Assistant-Regular.woff') format("woff");
 }
 
 @font-face {
 font-family: "assistant-medium";
-src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@500&display=swap') format("woff");
+src: url('./styles/fonts/Assistant-Medium.ttf') format("truetype"),
+    url('./styles/fonts/Assistant-Medium.woff') format("woff");
 }
 
 @font-face {
   font-family: "assistant-semibold";
-  src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@600&display=swap') format("woff");
+  src: url('./styles/fonts/Assistant-SemiBold.ttf') format("truetype"),
+    url('./styles/fonts/Assistant-SemiBold.woff') format("woff");
 }
 
 @font-face {
 font-family: "assistant-bold";
-src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@700&display=swap') format("woff");
+src: url('./styles/fonts/Assistant-Bold.ttf') format("truetype"),
+    url('./styles/fonts/Assistant-Bold.woff') format("woff");
 }
 
 @font-face {
   font-family: "PTSerif-bold";
-  src: url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap') format("woff");
+  src: url('./styles/fonts/PTSerif-Bold.ttf') format("truetype"),
+    url('./styles/fonts/PTSerif-Bold.woff') format("woff");
 }
