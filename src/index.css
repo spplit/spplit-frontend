@@ -1,3 +1,7 @@
+html {
+  height: 1000px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +14,29 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: "assistant-regular";
+  src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@400&display=swap') format("woff");
+}
+
+@font-face {
+font-family: "assistant-medium";
+src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@500&display=swap') format("woff");
+}
+
+@font-face {
+  font-family: "assistant-semibold";
+  src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@600&display=swap') format("woff");
+}
+
+@font-face {
+font-family: "assistant-bold";
+src: url('https://fonts.googleapis.com/css2?family=Assistant:wght@700&display=swap') format("woff");
+}
+
+@font-face {
+  font-family: "PTSerif-bold";
+  src: url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap') format("woff");
 }
