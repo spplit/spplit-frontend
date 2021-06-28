@@ -87,6 +87,7 @@ function SignUp() {
     })
 
     const { id, password1, password2, name, email, phone } = inputs;
+    const inputName = ["ID", "Password", "Password Confirm", "Name", "E-mail", "Phone"]
 
     const logoClick = () => {
         console.log("warping to main page...")
@@ -113,7 +114,7 @@ function SignUp() {
     const inputList = Object.keys(inputs).map((input, index) => {
         return (
             <RowContainer key={index}>
-                <TextContainer>{input}</TextContainer>
+                <TextContainer>{inputName[index]}</TextContainer>
                 <InputContainer
                     name={input}
                     value={inputs[input]}
