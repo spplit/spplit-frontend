@@ -95,9 +95,12 @@ function SignUp() {
     const buttonClick = (e) => {
         console.log("go to spplit button clicked");
         const noInput = Object.values(inputs).filter(idx => idx === "")
-        if (noInput.length > 0) {
-            alert("모든 값을 입력해주세요");
+        {
+            noInput.length > 0 ?
+                alert("모든 값을 입력해주세요") :
+                console.log("value pass to server");
         }
+
     }
     const handleInput = e => {
         const { name, value } = e.target;
@@ -107,6 +110,17 @@ function SignUp() {
         });
     };
 
+    const inputList = Object.keys(inputs).map((input, index) => {
+        return (
+            <RowContainer key={index}>
+                <TextContainer>{input}</TextContainer>
+                <InputContainer
+                    name={input}
+                    value={inputs[input]}
+                    onChange={handleInput} />
+            </RowContainer>)
+    })
+
     return (
         <OuterContainer>
             <InnerContainer>
@@ -115,48 +129,7 @@ function SignUp() {
                     <LogoName>Spplit!</LogoName>
                 </LogoContainer>
                 <SignupContainer>
-                    <RowContainer>
-                        <TextContainer>ID</TextContainer>
-                        <InputContainer
-                            name="id"
-                            value={id}
-                            onChange={handleInput} />
-                    </RowContainer>
-                    <RowContainer>
-                        <TextContainer>Password</TextContainer>
-                        <InputContainer
-                            name="password1"
-                            value={password1}
-                            onChange={handleInput} />
-                    </RowContainer>
-                    <RowContainer>
-                        <TextContainer>Password Confirm</TextContainer>
-                        <InputContainer
-                            name="password2"
-                            value={password2}
-                            onChange={handleInput} />
-                    </RowContainer>
-                    <RowContainer>
-                        <TextContainer>Name</TextContainer>
-                        <InputContainer
-                            name="name"
-                            value={name}
-                            onChange={handleInput} />
-                    </RowContainer>
-                    <RowContainer>
-                        <TextContainer>E-mail</TextContainer>
-                        <InputContainer
-                            name="email"
-                            value={email}
-                            onChange={handleInput} />
-                    </RowContainer>
-                    <RowContainer>
-                        <TextContainer>Phone Number</TextContainer>
-                        <InputContainer
-                            name="phone"
-                            value={phone}
-                            onChange={handleInput} />
-                    </RowContainer>
+                    {inputList}
                 </SignupContainer>
                 <SignupButton onClick={buttonClick}>
                     Go to Spplit!
