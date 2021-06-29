@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import QRFloating from '../components/QRFloating';
 import QRModal from '../components/QRModal';
+
 
 function Main() {
     const [qrModalOn, setQrModalOn] = useState(true);
