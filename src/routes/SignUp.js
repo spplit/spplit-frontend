@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logoimg from '../styles/images/spplit_logo.png';
 
@@ -76,7 +77,7 @@ const SignupButton = styled.button`
    
 `;
 
-function SignUp() {
+function SignUp({ history }) {
     const [inputs, setInputs] = useState({
         id: "",
         password1: "",
@@ -93,13 +94,18 @@ function SignUp() {
         console.log("warping to main page...")
     }
 
+    const goLogin = () => {
+        history.push('/login')
+    }
+
     const buttonClick = (e) => {
         console.log("go to spplit button clicked");
         const noInput = Object.values(inputs).filter(idx => idx === "")
         {
             noInput.length > 0 ?
                 alert("모든 값을 입력해주세요") :
-                console.log("value pass to server");
+                goLogin()
+
         }
 
     }
