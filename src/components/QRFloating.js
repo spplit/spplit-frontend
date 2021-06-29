@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 const FloatingButton = styled.a`
@@ -17,12 +17,22 @@ const FloatingButton = styled.a`
     &:hover{
         cursor: pointer;
     }
+    &:active{
+        box-shadow: 1px 1px 2px #999;
+    }
 `
 
-function QRFloating({ bottom, right }) {
+function QRFloating(props) {
+    const { bottom, right, setData, data } = props;
+
+    const qrHandler = () => {
+        console.log("floating clicked")
+        setData(!data)
+    }
+
     return (
         <div>
-            <FloatingButton bottom={bottom} right={right}>
+            <FloatingButton bottom={bottom} right={right} onClick={qrHandler}>
                 QR
             </FloatingButton>
         </div>

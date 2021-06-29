@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import QRCode from "react-qr-code";
 
 const QRContainer = styled.div`
     background-color: #D9D9D9; 
@@ -16,15 +17,17 @@ const QRContainer = styled.div`
     right: ${(props) => `${props.right + 50}px`};
 `
 
-function QRModal({ bottom, right }) {
-    const [modalOn, setModal] = useState(true);
+function QRModal({ modalOn, bottom, right }) {
+
+    const [sizeUp, setSizeUp] = useState(false)
+
     return (
         <div>
-            {modalOn &&
-                (<QRContainer bottom={bottom} right={right}>
-                    value
-                </QRContainer>)}
-        </div>
+            {modalOn && (<QRContainer bottom={bottom} right={right}>
+                <QRCode value="hello" size={150} />
+            </QRContainer>)
+            }
+        </div >
     )
 }
 
