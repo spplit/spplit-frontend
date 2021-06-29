@@ -6,6 +6,7 @@ import QRFloating from '../components/QRFloating';
 import QRModal from '../components/QRModal';
 import axios from 'axios';
 import List from '../components/List';
+import Search from '../components/Search';
 
 function Main() {
     const [qrModalOn, setQrModalOn] = useState(false);
@@ -21,6 +22,7 @@ function Main() {
     return (
         <div>
             <Header />
+            <Search />
             <List cards={cardList}/>
             <QRFloating bottom={40} right={100} setData={setQrModalOn} data={qrModalOn} />
             <QRModal modalOn={qrModalOn} bottom={40} right={100} />
