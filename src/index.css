@@ -1,47 +1,45 @@
 html {
-  height: 1000px;
+    height: 1000px;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+        "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 @font-face {
-  font-family: "assistant-regular";
-  src: url('./styles/fonts/Assistant-Regular.ttf') format("truetype"),
-    url('./styles/fonts/Assistant-Regular.woff') format("woff");
+    font-family: "assistant-regular";
+    src: url("./styles/fonts/Assistant-Regular.ttf") format("truetype"),
+        url("./styles/fonts/Assistant-Regular.woff") format("woff");
 }
 
 @font-face {
-font-family: "assistant-medium";
-src: url('./styles/fonts/Assistant-Medium.ttf') format("truetype"),
-    url('./styles/fonts/Assistant-Medium.woff') format("woff");
+    font-family: "assistant-medium";
+    src: url("./styles/fonts/Assistant-Medium.ttf") format("truetype"),
+        url("./styles/fonts/Assistant-Medium.woff") format("woff");
 }
 
 @font-face {
-  font-family: "assistant-semibold";
-  src: url('./styles/fonts/Assistant-SemiBold.ttf') format("truetype"),
-    url('./styles/fonts/Assistant-SemiBold.woff') format("woff");
+    font-family: "assistant-semibold";
+    src: url("./styles/fonts/Assistant-SemiBold.ttf") format("truetype"),
+        url("./styles/fonts/Assistant-SemiBold.woff") format("woff");
 }
 
 @font-face {
-font-family: "assistant-bold";
-src: url('./styles/fonts/Assistant-Bold.ttf') format("truetype"),
-    url('./styles/fonts/Assistant-Bold.woff') format("woff");
+    font-family: "assistant-bold";
+    src: url("./styles/fonts/Assistant-Bold.ttf") format("truetype"),
+        url("./styles/fonts/Assistant-Bold.woff") format("woff");
 }
 
 @font-face {
-  font-family: "PTSerif-bold";
-  src: url('./styles/fonts/PTSerif-Bold.ttf') format("truetype"),
-    url('./styles/fonts/PTSerif-Bold.woff') format("woff");
+    font-family: "PTSerif-bold";
+    src: url("./styles/fonts/PTSerif-Bold.ttf") format("truetype"),
+        url("./styles/fonts/PTSerif-Bold.woff") format("woff");
 }
