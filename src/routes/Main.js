@@ -5,6 +5,7 @@ import ScrollupFloating from '../components/ScrollupFloating';
 import QRFloating from '../components/QRFloating';
 import QRModal from '../components/QRModal';
 import axios from 'axios';
+import List from '../components/List';
 import Search from '../components/Search';
 
 function Main() {
@@ -22,6 +23,7 @@ function Main() {
         <div>
             <Header />
             <Search />
+            <List cards={cardList}/>
             <QRFloating bottom={40} right={100} setData={setQrModalOn} data={qrModalOn} />
             <QRModal modalOn={qrModalOn} bottom={40} right={100} />
             <ScrollupFloating bottom={50} right={40} />
