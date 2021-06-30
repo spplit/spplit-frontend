@@ -4,12 +4,13 @@ import styled, { css } from 'styled-components';
 import arrowRight from '../styles/images/arrowRight.png'
 
 const NavContainer = styled.div`
-    /* background-color: purple; */
+    background-color: #ffffff;
     display: flex;
     width: 100%;
     height: 9rem;
     bottom: 0;
     position: fixed;
+    z-index : 1;
 `;
 
 
