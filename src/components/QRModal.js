@@ -11,15 +11,13 @@ const QRContainer = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position : absolute;
+    position : fixed;
     z-index: 1;
-    bottom: ${(props) => `${props.bottom + 50}px`};
+    bottom: ${(props) => `${props.bottom + 70}px`};
     right: ${(props) => `${props.right + 50}px`};
 `
 
 function QRModal({ modalOn, bottom, right }) {
-
-    const [sizeUp, setSizeUp] = useState(false)
 
     return (
         <div>

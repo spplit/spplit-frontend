@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const FloatingButton = styled.a`
     position:fixed;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
