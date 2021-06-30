@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const ListContainer = styled.ul`
     position : absolute;
-    margin-top : 200px;
-    margin-left : 200px;
+    margin-top : 17vh;
+    margin-left : 10vw;
     width : 100%;
     height : 100%;
 `;
