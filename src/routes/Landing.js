@@ -61,6 +61,9 @@ const LandingLink = styled.button`
     border: none;
     background-color: transparent;
     font-size: 20px;
+    &:hover {
+        cursor: pointer;
+    }
     
 `;
 
@@ -101,6 +104,7 @@ const SubText = styled.p`
 
 const DownloadContainer = styled.div`
     display: flex;
+    flex-direction: row;
     margin: 0 auto;
 `;
 
@@ -111,23 +115,26 @@ const DownloadButton = styled.div`
     margin-left: 1rem;
     margin-right: 1rem;
     border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     &:hover {
         cursor: pointer;
         box-shadow: 3px #d9d9d9;
     }
 `;
 
-const DownloadText = styled.p`
+const DownloadText = styled.div`
     color: white;
-    width: 1rem;
-    height: 1rem;
     font-family: Assistant-Bold;
+    margin-left: 0.3rem;
 `;
 
-const DownloadImage = styled.image`
-    width: 100px;
-    height: 100px;
-
+const DownloadImage = styled.img`
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.3rem;
 `;
 
 
@@ -144,8 +151,8 @@ function Landing() {
                         <LogoName>Spplit!</LogoName>
                     </LogoContainer>
                     <LinkContainer>
-                        <LandingLink>SIGN UP</LandingLink>
-                        <LandingLink>LOG IN</LandingLink>
+                        <Link to="/signup"><LandingLink>SIGN UP</LandingLink></Link>
+                        <Link to="/login"><LandingLink>LOG IN</LandingLink></Link>
                     </LinkContainer>
                 </HeaderItemContainer>
                 </HeaderContainer>
