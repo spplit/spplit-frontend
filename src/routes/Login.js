@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const LoginContainer = styled.div `
    height: 80%;
@@ -88,6 +89,9 @@ const LoginButton = styled.button `
     height: 30px;
     border-radius: 20px;
     font-family: Assistant-SemiBold;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const Footer = styled.div `
@@ -123,9 +127,12 @@ function Login() {
                             <LoginInputPW type="password"/>
                         </RowContainer>
                     </LoginInput>
-                    <LoginButton>
+                    <Link to="/main">
+                        <LoginButton>
                         Go to Spplit!
-                    </LoginButton>
+                        </LoginButton>
+                    </Link>
+                    
                 </LoginItemContainer>
             </LoginContainer>
             <Footer>
