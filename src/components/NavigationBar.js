@@ -5,6 +5,8 @@ import arrowRight from '../styles/images/arrowRight.png';
 
 const NavContainer = styled.div`
     background-color: white;
+    background-color: #ffffff;
+    z-index : 1;
     display: flex;
     width: 100%;
     height: 9rem;

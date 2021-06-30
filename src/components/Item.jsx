@@ -5,7 +5,7 @@ const PopupConatiner = styled.div`
     position : fixed;
     display : flex;
     box-shadow : rgba(0,0,0,0.7) 0 0 0 9999px;
-    z-index : 100;
+    z-index : 2;
     width: 100%;
 `;
 

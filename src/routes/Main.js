@@ -14,7 +14,7 @@ function Main() {
     const [cardList, setCardList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/cards').then((res)=> {
+        axios.get('http://localhost:8080/cards').then((res) => {
             setCardList(res.data)
 
         })
@@ -25,10 +25,10 @@ function Main() {
             <Header />
 
             <Search />
-            <List cards={cardList}/>
-            <QRFloating bottom={40} right={100} setData={setQrModalOn} data={qrModalOn} />
-            <QRModal modalOn={qrModalOn} bottom={40} right={100} />
-            <ScrollupFloating bottom={50} right={40} />
+            <List cards={cardList} />
+            <QRFloating bottom={55} right={40} setData={setQrModalOn} data={qrModalOn} />
+            <QRModal modalOn={qrModalOn} bottom={55} right={40} />
+            {/* <ScrollupFloating bottom={50} right={40} /> */}
             <NavigationBar />
         </div>
     )

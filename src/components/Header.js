@@ -5,6 +5,7 @@ import logoimg from '../styles/images/spplit_logo.png';
 
 const HeaderContainer = styled.div`
     background-color: white;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     position: fixed;

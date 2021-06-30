@@ -5,28 +5,31 @@ import searchImg from "../styles/images/search.png";
 
 const SearchContainer = styled.div`
     display : inline-block;
-    width : 700px;
-    height : 60px;
-    margin-top : 100px;
-    margin-left : 200px;
+    background-color : #ffffff;
+    width : 100vw;
+    height : 3vw;
+    position: fixed;
+    margin-top : 5vw;
+    z-index : 1;
 `;
 
 const SearchContents = styled.input`
-    width : 70%;
+    width : 22%;
     height: 50%;
     font-family: "assistant-regular";
     color: #29548e;
-    font-size : 20px;
-    border: 2px solid #32558A;
-    border-radius : 25px;
-    padding : 10px;
+    font-size : 1.3rem;
+    border: 0.1rem solid #32558A;
+    border-radius : 1.5rem;
+    padding : 1vh;
+    margin-left : 10vw;
 `;
 
 const SearchButton = styled.img`
     width : 35px;
     height : 35px;
-    margin-left : 15px;
-    margin-top : 10px;
+    margin-left : 1vw;
+    margin-top : 1vh;
     vertical-align: top;
     &:hover{
         cursor: pointer;
