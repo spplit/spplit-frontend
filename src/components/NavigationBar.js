@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import arrowRight from '../styles/images/arrowRight.png'
+import arrowRight from '../styles/images/arrowRight.png';
 
 const NavContainer = styled.div`
-    /* background-color: purple; */
+    background-color: white;
     display: flex;
     width: 100%;
     height: 9rem;

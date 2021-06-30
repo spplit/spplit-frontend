@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import logoimg from '../styles/images/spplit_logo.png';
 
 const HeaderContainer = styled.div`
-    /* background-color: aqua; */
+    background-color: white;
     display: flex;
     align-items: center;
     position: fixed;
