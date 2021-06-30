@@ -12,7 +12,7 @@ const QRContainer = styled.div`
     justify-content: center;
     align-items: center;
     position : fixed;
-    z-index: 1;
+    z-index: 3;
     bottom: ${(props) => `${props.bottom + 70}px`};
     right: ${(props) => `${props.right + 50}px`};
 `

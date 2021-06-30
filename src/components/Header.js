@@ -4,13 +4,13 @@ import styled, { css } from 'styled-components';
 import logoimg from '../styles/images/spplit_logo.png';
 
 const HeaderContainer = styled.div`
-    background-color: white;
     background-color: #ffffff;
     display: flex;
     align-items: center;
     position: fixed;
     width: 100%;
     height: 6rem;
+    z-index : 1;
 `;
 
 const HeaderItemContainer = styled.div`
