@@ -5,11 +5,12 @@ import searchImg from "../styles/images/search.png";
 
 const SearchContainer = styled.div`
     display : inline-block;
-    /* background-color : #ffffff; */
+    background-color : #ffffff;
     width : 100vw;
     height : 3vw;
     position: fixed;
     margin-top : 5vw;
+    z-index : 1;
 `;
 
 const SearchContents = styled.input`
