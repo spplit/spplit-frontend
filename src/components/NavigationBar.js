@@ -28,8 +28,11 @@ const NavItemContainer = styled.div`
 const NavButton = styled.button`
     font-size: 18px;
     font-family: 'assistant-medium';
-    background-color: ${ props => props.color };
-    
+    background-color: transparent;
+    ${({ active }) =>
+        active &&
+        `background-color : #d9d9d9;
+        `}
     border-radius: 15px;
     border: none;
     width: 9rem;
@@ -65,10 +68,8 @@ const MyQRContainer = styled.div`
 `;
 
 function NavigationBar() {
-    const [clicked, setClicked] = useState(null);
-    const [notClicked, setNotClicked] = useState(null);
+    const [clicked, setClicked] = useState(0);
 
-    const [color, setColor] = useState("transparent");
     const isOn = (event) => {
         setClicked(event.target.id);
         console.log(event.target.id);
@@ -80,14 +81,10 @@ function NavigationBar() {
                 let clickedButton = document.getElementById(clicked);
                 console.log(clicked);
             }
-
-            if (notClicked !== null) {
-                let notClicked = document.getElementById(notClicked);
-            }
         }, [clicked]
     );
 
-    const buttons = [ 
+    const buttons = [
         {
             id: 0,
             name: "Bookmark"
@@ -101,15 +98,18 @@ function NavigationBar() {
             id: 3,
             name: "Club"
         }];
-    
-    const buttonList = buttons.map((button, id) => (<NavButton key={ button.id } color={ color } onClick={ isOn }>{button.name}</NavButton>))
+
+    const buttonList = buttons.map((button, id) => {
+        console.log(clicked === id);
+        return (<NavButton id={id} active={clicked === id} onClick={() => setClicked(id)}>{button.name}</NavButton>)
+    })
     return (
         <div>
             <NavContainer>
                 <NavItemContainer>
-                    { buttonList }
+                    {buttonList}
                     <MoreButton>
-                        <ArrowImage src={ arrowRight }></ArrowImage>
+                        <ArrowImage src={arrowRight}></ArrowImage>
                     </MoreButton>
                 </NavItemContainer>
                 <MyQRContainer></MyQRContainer>
