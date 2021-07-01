@@ -100,7 +100,6 @@ function NavigationBar() {
         }];
 
     const buttonList = buttons.map((button, id) => {
-        console.log(clicked === id);
         return (<NavButton id={id} active={clicked === id} onClick={() => setClicked(id)}>{button.name}</NavButton>)
     })
     return (
