@@ -24,16 +24,11 @@ const FloatingButton = styled.a`
 `
 
 function QRFloating(props) {
-    const { bottom, right, setData, data } = props;
-
-    const qrHandler = () => {
-        console.log("floating clicked")
-        setData(!data)
-    }
+    const { bottom, right, qrButtonRef } = props;
 
     return (
         <div>
-            <FloatingButton bottom={bottom} right={right} onClick={qrHandler}>
+            <FloatingButton bottom={bottom} right={right} ref={qrButtonRef}>
                 QR
             </FloatingButton>
         </div>
