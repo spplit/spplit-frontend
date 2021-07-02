@@ -1,15 +1,6 @@
 import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-// background: rgba(255,255,255,0.4);
-//    border-radius: 10px;
-//    border: 1px solid rgba(255,255,255,0.2);
-//    position: absolute;
-//    backdrop-filter: blur(5px);
-//   -webkit-backdrop-filter: blur(5px);
-//    display: block;
-//    margin: 0 auto;
-
 const PopupConatiner = styled.div`
     position: fixed;
     top: 0;
@@ -29,7 +20,7 @@ const ItemContainer = styled.div`
     width: 900px;
     height: 600px;
     background-color: #ffffff;
-    border: 2px solid #707070;
+    border: none;
     border-radius: 50px;
     z-index: 1;
     top: ${(props) => `${props.top}px`};
@@ -43,7 +34,7 @@ const PhotoContainer = styled.div`
     width: 40%;
     height: 40%;
     margin: 30px;
-    border: 1px solid #707070;
+    border: none;
     border-radius: 15px;
     background-color: #d9d9d9;
     object-fit: fill;
@@ -129,6 +120,7 @@ const NotesContents = styled.div`
 `;
 
 const NameCardModal = ({ modalOn, card, top, left, itemRef }) => {
+    // 모달이 켜지면 뒤에 스크롤 방지하는 기능
     // useEffect(() => {
     //     document.body.style.cssText = `
     //       position: fixed; 

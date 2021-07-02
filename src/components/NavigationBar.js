@@ -9,7 +9,7 @@ const NavContainer = styled.div`
     z-index : 1;
     display: flex;
     width: 100%;
-    height: 9rem;
+    height: 7rem;
     bottom: 0;
     position: fixed;
 `;

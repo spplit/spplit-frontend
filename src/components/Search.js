@@ -15,7 +15,7 @@ const SearchContainer = styled.div`
 `;
 
 const SearchContents = styled.input`
-    transition: width .4s linear;
+    transition: width .25s linear;
     width : 20%;
     height: 50%;
     font-family: "assistant-regular";
@@ -26,16 +26,17 @@ const SearchContents = styled.input`
     border-radius : 0.6rem;
     padding : 1vh;
     margin-left : 10vw;
+    padding-left: 0.8rem;
     &:focus {
         outline: none;
-        width: 25%;
+        width: 23%;
     }
 `;
 
 const SearchButton = styled.img`
-    width : 35px;
-    height : 35px;
-    margin-left : 1vw;
+    width : 25px;
+    height : 25px;
+    margin-left : 0.8vw;
     margin-top : 1vh;
     vertical-align: top;
     &:hover{
