@@ -1,5 +1,14 @@
-import React from "react"
-import styled from "styled-components"
+import React, { useEffect } from 'react';
+import styled, { css } from 'styled-components';
+
+// background: rgba(255,255,255,0.4);
+//    border-radius: 10px;
+//    border: 1px solid rgba(255,255,255,0.2);
+//    position: absolute;
+//    backdrop-filter: blur(5px);
+//   -webkit-backdrop-filter: blur(5px);
+//    display: block;
+//    margin: 0 auto;
 
 const PopupConatiner = styled.div`
     position: fixed;
@@ -7,10 +16,11 @@ const PopupConatiner = styled.div`
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(200, 200, 200, 0.4);
+    backdrop-filter: blur(5px);
     z-index: 4;
     box-shadow: rgba(0, 0, 0, 0.7) 0 0 0 9999px;
-`
+`;
 
 const ItemContainer = styled.div`
     position: fixed;
@@ -27,7 +37,7 @@ const ItemContainer = styled.div`
     &:active {
         box-shadow: 1px 1px 2px #999;
     }
-`
+`;
 
 const PhotoContainer = styled.div`
     width: 40%;
@@ -37,76 +47,101 @@ const PhotoContainer = styled.div`
     border-radius: 15px;
     background-color: #d9d9d9;
     object-fit: fill;
-`
+`;
 
 const PhotoImage = styled.img`
     width: 100%;
     height: 100%;
     border-radius: 15px;
     object-fit: fill;
-`
+`;
 
 const ProfileContainer = styled.div`
     width: 40%;
     height: 40%;
     margin: 30px;
-`
+`;
 
 const ProfileName = styled.div`
-    font-family: "assistant-semibold";
+    font-family: 'assistant-semibold';
     font-size: 40px;
-`
+`;
 
 const ProfileJob = styled.div`
-    font-family: "assistant-regular";
+    font-family: 'assistant-regular';
     font-size: 30px;
     margin-bottom: 20px;
-`
+`;
+
+const hover = css`
+    &:hover {
+        background-color: #d9d9d9;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+`;
 
 const ProfilePhone = styled.div`
-    font-family: "assistant-medium";
+    font-family: 'assistant-medium';
     font-size: 30px;
     margin-bottom: 10px;
-`
+    padding: 0px 10px;
+    ${hover}
+`;
 
 const ProfileEmail = styled.div`
-    font-family: "assistant-medium";
+    font-family: 'assistant-medium';
+    padding: 0px 10px;
     font-size: 30px;
-`
+    ${hover}
+`;
 
 const TagsContainer = styled.div`
     width: 100%;
     height: 20%;
     margin-left: 30px;
-`
+`;
 
 const TagsName = styled.div`
-    font-family: "assistant-semibold";
+    font-family: 'assistant-semibold';
     font-size: 34px;
-`
+`;
 
 const TagsContents = styled.div`
-    font-family: "assistant-medium";
+    font-family: 'assistant-medium';
     font-size: 30px;
-`
+`;
 
 const NotesContainer = styled.div`
     width: 100%;
     height: 40%;
     margin-left: 30px;
-`
+`;
 
 const NotesName = styled.div`
-    font-family: "assistant-semibold";
+    font-family: 'assistant-semibold';
     font-size: 34px;
-`
+`;
 
 const NotesContents = styled.div`
-    font-family: "assistant-medium";
+    font-family: 'assistant-medium';
     font-size: 30px;
-`
+`;
 
 const Item = ({ modalOn, card, top, left, itemRef }) => {
+    useEffect(() => {
+        document.body.style.cssText = `
+          position: fixed; 
+          top: -${window.scrollY}px;
+          overflow-y: scroll;
+          width: 100%;`;
+        return () => {
+            const scrollY = document.body.style.top;
+            document.body.style.cssText = '';
+            window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+        };
+    }, []);
+
     return (
         <div>
             {modalOn && (
@@ -137,7 +172,7 @@ const Item = ({ modalOn, card, top, left, itemRef }) => {
                 </PopupConatiner>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default Item
+export default Item;

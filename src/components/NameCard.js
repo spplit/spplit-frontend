@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import Item from "./Item.jsx"
-import useDetectItemClick from "./useDetectItemClick"
+import Item from "./NameCardModal.js"
+import useDetectItemClick from "./useDetectNameCardClick"
 
 const CardContainer = styled.div`
     display: flex;

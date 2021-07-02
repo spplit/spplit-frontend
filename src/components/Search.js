@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import searchImg from "../styles/images/search.png";
-import List from '../components/List';
+import List from './NameCardList';
 
 const SearchContainer = styled.div`
     display : inline-block;

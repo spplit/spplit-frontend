@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import arrowRight from '../styles/images/arrowRight.png';
+import useDetectProfileClick from '../components/useDetectProfileClick';
 
 const NavContainer = styled.div`
     background-color: white;
@@ -29,10 +30,6 @@ const NavButton = styled.button`
     font-size: 18px;
     font-family: 'assistant-medium';
     background-color: transparent;
-    ${({ active }) =>
-        active &&
-        `background-color : #d9d9d9;
-        `}
     border-radius: 15px;
     border: none;
     width: 9rem;
@@ -41,6 +38,14 @@ const NavButton = styled.button`
         background-color: #d9d9d9;
         cursor: pointer;
     }
+    ${({ active }) =>
+        active &&
+        css`
+          background-color: #29548e;
+          &:hover {
+            background: #29548e;
+          }
+        `}
 `;
 
 const MoreButton = styled.button`

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import NavigationBar from '../components/NavigationBar';
@@ -6,9 +5,11 @@ import ScrollupFloating from '../components/ScrollupFloating';
 import QRFloating from '../components/QRFloating';
 import QRModal from '../components/QRModal';
 import axios from 'axios';
-import List from '../components/List';
+import List from '../components/NameCardList';
 import Search from '../components/Search';
 import useDetectQrClick from '../components/useDetectQrClick';
+import ProfileModal from '../components/ProfileModal';
+
 
 function Main() {
   
@@ -18,6 +19,7 @@ function Main() {
 
     return (
         <div>
+            <ProfileModal></ProfileModal>
             <Header />
             <Search />
             <QRFloating bottom={55} right={40} qrButtonRef={qrButtonRef} />
