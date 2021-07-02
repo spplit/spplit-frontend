@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { ImQrcode } from "react-icons/im"
 
 const FloatingButton = styled.a`
     position:fixed;
@@ -24,17 +25,12 @@ const FloatingButton = styled.a`
 `
 
 function QRFloating(props) {
-    const { bottom, right, setData, data } = props;
-
-    const qrHandler = () => {
-        console.log("floating clicked")
-        setData(!data)
-    }
+    const { bottom, right, qrButtonRef } = props;
 
     return (
         <div>
-            <FloatingButton bottom={bottom} right={right} onClick={qrHandler}>
-                QR
+            <FloatingButton bottom={bottom} right={right} ref={qrButtonRef}>
+                <ImQrcode size="30" />
             </FloatingButton>
         </div>
     )
