@@ -1,10 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 
+/*
+    qrButtonRef : qr button component reference
+    modalRef : qr modal component reference
+    modalOn : qr modal on/off
+    sizeUp : qr modal size up/down
+*/
 export default function useDetectQrClick() {
     const qrButtonRef = useRef(null);
     const modalRef = useRef(null);
 
     const [modalOn, setModalOn] = useState(false);
+    const [sizeUp, setSizeUp] = useState(false)
 
     const handler = event => {
         if (qrButtonRef.current && qrButtonRef.current.contains(event.target)) {
@@ -12,6 +19,7 @@ export default function useDetectQrClick() {
 
         }
         if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setSizeUp(false)
             return setModalOn(false)
         }
     }
@@ -29,6 +37,8 @@ export default function useDetectQrClick() {
         qrButtonRef,
         modalRef,
         modalOn,
-        setModalOn
+        setModalOn,
+        sizeUp,
+        setSizeUp
     }
 }
