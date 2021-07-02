@@ -55,21 +55,17 @@ const PhotoImage = styled.img`
     object-fit: fill;
 `
 
-const Card = ({ card, itemModalOn, cardRef, itemRef }) => {
+const Card = ({ card, itemModalOn, setItemModalOn, itemRef }) => {
     // const [itemModalOn, setItemModalOn] = useState(false)
 
-    // const itemHandler = () => {
-    //     const id = card.id
-    //     console.log(id, "가 클릭됨")
-    //     setItemModalOn(!itemModalOn)
-    // }
+    const itemHandler = () => {
+        const id = card.id
+        console.log(id, "가 클릭됨")
+        setItemModalOn(true)
+    }
     return (
         <div>
-            <CardContainer
-                className="card"
-                id={card.id}
-                ref={(elem) => (cardRef.current[card.id] = elem)}
-            >
+            <CardContainer className="card" id={card.id} onClick={itemHandler}>
                 <ProfileContainer>
                     <ProfileName>{card.name}</ProfileName>
                     <ProfileJob>{card.job}</ProfileJob>
