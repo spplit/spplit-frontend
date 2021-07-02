@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card.jsx';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const ListContainer = styled.ul`
@@ -10,15 +11,21 @@ const ListContainer = styled.ul`
     height : 100%;
 `;
 
-const List = ({cards}) => {
+const List = ({result}) => {
 
-    let cardList = cards.map((card) =>
-    <Card key={card.id} card={card} />
-    )
-    
+    // const [cardList, setCardList] = useState([]);
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:8080/cards').then((res) => {
+    //         setCardList(res.data)
+
+    //     })
+    // }, [])  
+
     return (
         <ListContainer>
-            { cardList }     
+        {result.map((card) => 
+        <Card key={card.id} card={card} />)}    
         </ListContainer>
     )
 }

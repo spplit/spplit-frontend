@@ -11,21 +11,15 @@ import Search from '../components/Search';
 import useDetectQrClick from '../components/useDetectQrClick';
 
 function Main() {
+  
     const [cardList, setCardList] = useState([]);
     const { modalOn, qrButtonRef, modalRef, sizeUp, setSizeUp } = useDetectQrClick();
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/cards').then((res) => {
-            setCardList(res.data)
-
-        })
-    }, [])
 
     return (
         <div>
             <Header />
             <Search />
-            <List cards={cardList} />
             <QRFloating bottom={55} right={40} qrButtonRef={qrButtonRef} />
             <QRModal modalOn={modalOn} sizeUp={sizeUp} setSizeUp={setSizeUp} bottom={55} right={40} modalRef={modalRef} />
             {/* <ScrollupFloating bottom={50} right={40} /> */}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import searchImg from "../styles/images/search.png";
+import List from '../components/List';
 
 const SearchContainer = styled.div`
     display : inline-block;
@@ -37,9 +38,15 @@ const SearchButton = styled.img`
 `; 
 
 const Search = () => {
-    const [data, setData] = useState([])
-    const [query, setQuery] = useState([])
+    const [cardList, setCardList] = useState([])
+    const [query, setQuery] = useState(null)
 
+    useEffect(() => {
+        axios.get('http://localhost:8080/cards').then((res) => {
+            setCardList(res.data)
+        })
+    }, []) 
+    
     // Enter시 btn클릭과 동일효과
     const onEnterPress = (e) => {
         if (e.key == 'Enter') {
@@ -53,20 +60,48 @@ const Search = () => {
         console.log("clicked")
         console.log(query)
         
-        async function get() {
-            const result = await axios(`http://localhost:8080/cards?query=${query}`)
-            setData(result.data)
+        // async function get() {
+        //     const result = await axios(`http://localhost:8080/cards?query=${query}`)
+        //     setData(result.data)
+        // }
+
+        // get()
+    }
+
+    const result = cardList.filter((data)=>{
+
+        const tagCheck = (query, tagList) => {
+            let x = false;
+            for (var i in tagList) {
+                for (let j = 0; j < tagList.length; ++j){
+                    if (tagList[j].toLowerCase().includes(query.toLowerCase())) {
+                        x = true
+                    }
+                }
+                return x;
+                }
+            }
+
+        if(query == null) {
+            return data
         }
 
-        get()
-    }
-    
+        else if(data.name.toLowerCase().includes(query.trim().toLowerCase()) || data.job.toLowerCase().includes(query.trim().toLowerCase()) 
+            || data.phone.includes(query.trim().toLowerCase()) || data.email.toLowerCase().includes(query.trim().toLowerCase()) 
+            || data.notes.toLowerCase().includes(query.trim().toLowerCase()) || (tagCheck(query.trim(), data.tags))){
+            return data
+        }
+
+    })
+
+
     return (
         <div>
             <SearchContainer>
                 <SearchContents placeholder="검색해보세요!" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={onEnterPress}/>
                 <SearchButton src={searchImg} onClick={btnClick} />
             </SearchContainer>
+            <List result={result}/>
         </div>
     )
 }
