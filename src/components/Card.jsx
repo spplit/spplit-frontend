@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import Item from "./Item.jsx"
+import useDetectItemClick from "./useDetectItemClick.js"
 
 const CardContainer = styled.div`
     display: flex;
@@ -55,14 +56,16 @@ const PhotoImage = styled.img`
     object-fit: fill;
 `
 
-const Card = ({ card, itemModalOn, setItemModalOn, itemRef }) => {
-    // const [itemModalOn, setItemModalOn] = useState(false)
+const Card = ({ card }) => {
+    const [itemModalOn, setItemModalOn] = useState(false)
+    const { itemRef } = useDetectItemClick(itemModalOn, setItemModalOn)
 
     const itemHandler = () => {
         const id = card.id
         console.log(id, "가 클릭됨")
         setItemModalOn(true)
     }
+
     return (
         <div>
             <CardContainer className="card" id={card.id} onClick={itemHandler}>

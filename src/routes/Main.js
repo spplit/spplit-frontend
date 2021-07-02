@@ -14,7 +14,7 @@ import useDetectItemClick from '../components/useDetectItemClick';
 function Main() {
     const [cardList, setCardList] = useState([]);
     const { modalOn, qrButtonRef, modalRef } = useDetectQrClick();
-    const { itemModalOn, setItemModalOn, itemRef } = useDetectItemClick();
+    // const { itemModalOn, setItemModalOn, itemRef } = useDetectItemClick();
     useEffect(() => {
         axios.get('http://localhost:8080/cards').then((res) => {
             setCardList(res.data)
@@ -26,7 +26,7 @@ function Main() {
         <div>
             <Header />
             <Search />
-            <List cards={cardList} itemModalOn={itemModalOn} setItemModalOn={setItemModalOn} itemRef={itemRef} />
+            <List cards={cardList} />
             <QRFloating bottom={55} right={40} qrButtonRef={qrButtonRef} />
             <QRModal modalOn={modalOn} bottom={55} right={40} modalRef={modalRef} />
             {/* <ScrollupFloating bottom={50} right={40} /> */}

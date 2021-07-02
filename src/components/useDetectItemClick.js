@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function useDetectItemClick() {
+export default function useDetectItemClick(itemModalOn, setItemModalOn) {
     // const cardRef = useRef();
     const itemRef = useRef();
-    const [itemModalOn, setItemModalOn] = useState(false);
+    // const [itemModalOn, setItemModalOn] = useState(false);
 
     const cardHandler = event => {
         // for (let i = 0; i < cardRef.current.length; i++) {
@@ -27,9 +27,7 @@ export default function useDetectItemClick() {
     })
 
     return {
-        // cardRef,
-        itemRef,
-        itemModalOn,
-        setItemModalOn
+        itemRef
     }
+
 }

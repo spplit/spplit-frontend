@@ -8,7 +8,7 @@ const PopupConatiner = styled.div`
     left: 0;
     bottom: 0;
     box-shadow: rgba(0, 0, 0, 0.7) 0 0 0 9999px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 4;
 `
 

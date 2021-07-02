@@ -10,16 +10,8 @@ const ListContainer = styled.ul`
     height: 100%;
 `
 
-const List = ({ cards, itemModalOn, setItemModalOn, itemRef }) => {
-    let cardList = cards.map((card) => (
-        <Card
-            key={card.id}
-            itemModalOn={itemModalOn}
-            setItemModalOn={setItemModalOn}
-            card={card}
-            itemRef={itemRef}
-        />
-    ))
+const List = ({ cards }) => {
+    let cardList = cards.map((card) => <Card key={card.id} card={card} />)
 
     return <ListContainer>{cardList}</ListContainer>
 }
