@@ -9,7 +9,7 @@ const NavContainer = styled.div`
     z-index : 1;
     display: flex;
     width: 100%;
-    height: 9rem;
+    height: 7rem;
     bottom: 0;
     position: fixed;
 `;
@@ -29,10 +29,6 @@ const NavButton = styled.button`
     font-size: 18px;
     font-family: 'assistant-medium';
     background-color: transparent;
-    ${({ active }) =>
-        active &&
-        `background-color : #d9d9d9;
-        `}
     border-radius: 15px;
     border: none;
     width: 9rem;
@@ -41,6 +37,14 @@ const NavButton = styled.button`
         background-color: #d9d9d9;
         cursor: pointer;
     }
+    ${({ active }) =>
+        active &&
+        css`
+          background-color: #29548e;
+          &:hover {
+            background: #29548e;
+          }
+        `}
 `;
 
 const MoreButton = styled.button`

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import searchImg from "../styles/images/search.png";
-import List from '../components/List';
+import List from './NameCardList';
 
 const SearchContainer = styled.div`
     display : inline-block;
@@ -15,21 +15,28 @@ const SearchContainer = styled.div`
 `;
 
 const SearchContents = styled.input`
-    width : 22%;
+    transition: width .25s linear;
+    width : 20%;
     height: 50%;
     font-family: "assistant-regular";
+    background-color: #d9d9d9;
     color: #29548e;
-    font-size : 1.3rem;
-    border: 0.1rem solid #32558A;
-    border-radius : 1.5rem;
+    border: none;
+    font-size : 1rem;
+    border-radius : 0.6rem;
     padding : 1vh;
     margin-left : 10vw;
+    padding-left: 0.8rem;
+    &:focus {
+        outline: none;
+        width: 23%;
+    }
 `;
 
 const SearchButton = styled.img`
-    width : 35px;
-    height : 35px;
-    margin-left : 1vw;
+    width : 25px;
+    height : 25px;
+    margin-left : 0.8vw;
     margin-top : 1vh;
     vertical-align: top;
     &:hover{
