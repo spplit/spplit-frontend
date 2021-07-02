@@ -2,6 +2,8 @@ import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import logoimg from '../styles/images/spplit_logo.png';
+import ProfileModal from './ProfileModal';
+import useDetectProfileClick from './useDetectProfileClick';
 
 const HeaderContainer = styled.div`
     background-color: #ffffff;
@@ -62,6 +64,8 @@ const ProfileImage = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 70%;
+    /* bottom:${(props) => `${props.bottom}px`};
+	right:${(props) => `${props.right}px`}; */
     &:hover {
         cursor: pointer;
     }
@@ -69,16 +73,20 @@ const ProfileImage = styled.div`
 
 
 
-function Header() {
+const Header = () => {
+
+    const [profileModalOn, setProfileModalOn] = useState(false);
+    const { profileRef } = useDetectProfileClick(profileModalOn, setProfileModalOn);
+
+    const profileHandler = () => {
+        setProfileModalOn(true)
+    }
+
+
     const [name, setName] = useState('Mango');
 
     const logoClick = () => {
         console.log("warping to main page...")
-    }
-    
-    const profileClick = () => {
-        console.log("clicked")
-
     }
 
     return (
@@ -91,10 +99,11 @@ function Header() {
                 </LogoContainer>
                 <ProfileContainer>
                     <ProfileName>{ name }'s Spplit!</ProfileName>
-                    <ProfileImage onClick={ profileClick }></ProfileImage>
+                    <ProfileImage onclick={ profileHandler }></ProfileImage>
                 </ProfileContainer>
                 </HeaderItemContainer>
             </HeaderContainer>
+            <ProfileModal modalOn={ profileModalOn } top={ 200 } right={ 200 } profileRef={ profileRef }/>
         </div>
     )
 };

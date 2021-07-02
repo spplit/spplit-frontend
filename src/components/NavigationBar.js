@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import arrowRight from '../styles/images/arrowRight.png';
-import useDetectProfileClick from '../components/useDetectProfileClick';
 
 const NavContainer = styled.div`
     background-color: white;

@@ -15,15 +15,21 @@ const SearchContainer = styled.div`
 `;
 
 const SearchContents = styled.input`
-    width : 22%;
+    transition: width .4s linear;
+    width : 20%;
     height: 50%;
     font-family: "assistant-regular";
+    background-color: #d9d9d9;
     color: #29548e;
-    font-size : 1.3rem;
-    border: 0.1rem solid #32558A;
-    border-radius : 1.5rem;
+    border: none;
+    font-size : 1rem;
+    border-radius : 0.6rem;
     padding : 1vh;
     margin-left : 10vw;
+    &:focus {
+        outline: none;
+        width: 25%;
+    }
 `;
 
 const SearchButton = styled.img`

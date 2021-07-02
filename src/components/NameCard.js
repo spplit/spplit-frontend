@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import Item from "./NameCardModal.js"
-import useDetectItemClick from "./useDetectNameCardClick"
+import React, { useState } from "react";
+import styled from "styled-components";
+import NameCardModal from "./NameCardModal.js";
+import useDetectItemClick from "./useDetectNameCardClick";
 
 const CardContainer = styled.div`
     display: flex;
@@ -82,9 +82,9 @@ const Card = ({ card }) => {
                     <PhotoImage src={card.imgUrl}></PhotoImage>
                 </PhotoContainer>
             </CardContainer>
-            <Item modalOn={itemModalOn} card={card} top={250} left={300} itemRef={itemRef} />
+            <NameCardModal modalOn={itemModalOn} card={card} top={250} left={300} itemRef={itemRef} />
         </div>
     )
 }
 
-export default Card
+export default Card;

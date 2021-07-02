@@ -19,7 +19,6 @@ function Main() {
 
     return (
         <div>
-            <ProfileModal></ProfileModal>
             <Header />
             <Search />
             <QRFloating bottom={55} right={40} qrButtonRef={qrButtonRef} />
