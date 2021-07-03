@@ -14,7 +14,6 @@ const CardContainer = styled.div`
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.15);
     border-radius: 30px;
     margin-bottom: 2.3rem;
-    margin-top: 1rem;
     &:hover {
         box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.25), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
         cursor: pointer;
