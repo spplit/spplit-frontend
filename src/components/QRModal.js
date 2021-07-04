@@ -23,8 +23,9 @@ const Modal = styled.div`
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6); 
+    background: rgba(200, 200, 200, 0.6); 
     z-index: 3;
+    backdrop-filter: blur(5px);
 `
 const SizeupModal = styled.div`
     position: fixed;

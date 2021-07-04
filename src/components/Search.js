@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import searchImg from "../styles/images/search.png";
-import List from '../components/List';
+import List from './NameCardList';
+
+const SearchArea = styled.div`
+    position: relative;
+    width: 100vw;
+    height: 3vw;
+`;
 
 const SearchContainer = styled.div`
     display : inline-block;
@@ -10,26 +16,38 @@ const SearchContainer = styled.div`
     width : 100vw;
     height : 3vw;
     position: fixed;
-    margin-top : 5vw;
     z-index : 1;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    transition: 0.4s ease;
+    &.hide {
+        transform: translateY(-6rem);
+    }
 `;
 
 const SearchContents = styled.input`
-    width : 22%;
+    transition: width .25s linear;
+    width : 20%;
     height: 50%;
     font-family: "assistant-regular";
+    background-color: #d9d9d9;
     color: #29548e;
-    font-size : 1.3rem;
-    border: 0.1rem solid #32558A;
-    border-radius : 1.5rem;
+    border: none;
+    font-size : 1rem;
+    border-radius : 0.6rem;
     padding : 1vh;
     margin-left : 10vw;
+    padding-left: 0.8rem;
+    &:focus {
+        outline: none;
+        width: 23%;
+    }
 `;
 
 const SearchButton = styled.img`
-    width : 35px;
-    height : 35px;
-    margin-left : 1vw;
+    width : 25px;
+    height : 25px;
+    margin-left : 0.8vw;
     margin-top : 1vh;
     vertical-align: top;
     &:hover{
@@ -37,15 +55,39 @@ const SearchButton = styled.img`
     }
 `; 
 
-const Search = ({filter}) => {
-    // const [cardList, setCardList] = useState([])
-    const [query, setQuery] = useState(null)
+const throttle = function (callback, waitTime) {
+    let timerId = null;
+    return (e) => {
+        if (timerId) return;
+        timerId = setTimeout(() => {
+            callback.call(this, e);
+            timerId = null;
+        }, waitTime);
+    }
+}
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:8080/cards').then((res) => {
-    //         setCardList(res.data)
-    //     })
-    // }, []) 
+const Search = ({filter}) => {
+    const [query, setQuery] = useState(null);
+    const [hide, setHide] = useState(false);
+    const [pageY, setPageY] = useState(0);
+    const documentRef = useRef(document);
+
+    const handleScroll = () => {
+        const { pageYOffset } = window;
+        const deltaY = pageYOffset - pageY;
+        const hide = pageYOffset !== 0 && deltaY >= 0;
+        setHide(hide);
+        setPageY(pageYOffset);
+    }
+
+    const throttleScroll = throttle(handleScroll, 50);
+
+    useEffect(() => {
+        documentRef.current.addEventListener("scroll", throttleScroll);
+        })
+        return () => documentRef.current.removeEventListener("scroll", throttleScroll);
+    }, [pageY]);
+
     
     // Enter시 btn클릭과 동일효과
     const onEnterPress = (e) => {
@@ -97,11 +139,13 @@ const Search = ({filter}) => {
 
     return (
         <div>
-            <SearchContainer>
-                <SearchContents placeholder="검색해보세요!" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={onEnterPress}/>
-                <SearchButton src={searchImg} onClick={btnClick} />
-            </SearchContainer>
-            <List result={result}/>
+            <SearchArea>
+                <SearchContainer className={hide && 'hide'}>
+                    <SearchContents placeholder="검색해보세요!" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={onEnterPress}/>
+                    <SearchButton src={searchImg} onClick={btnClick} />
+                </SearchContainer>
+                <List result={result}/>
+            </SearchArea>
         </div>
     )
 }

@@ -1,50 +1,69 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import Item from "./Item.jsx"
-import useDetectItemClick from "./useDetectItemClick"
+import React, { useState } from "react";
+import styled from "styled-components";
+import NameCardModal from "./NameCardModal.js";
+import useDetectItemClick from "./useDetectNameCardClick";
 
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    width: 750px;
-    height: 250px;
-    border: 1px solid #707070;
+    width: 600px;
+    height: 200px;
+    border: none;
+    transition: box-shadow 300ms cubic-bezier(0.41, 0.25, 0.08, 1) 0ms;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.15);
     border-radius: 30px;
-    margin-bottom: 1rem;
+    margin-bottom: 2.3rem;
     &:hover {
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.25), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
         cursor: pointer;
     }
 `
 
 const ProfileContainer = styled.div`
-    width: 40%;
+    width: 45%;
     height: 40%;
-    margin: 30px;
+    padding-top: 0.8rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.3rem;
+
+    
 `
 
 const ProfileName = styled.div`
     font-family: "assistant-semibold";
-    font-size: 32px;
+    font-size: 25px;
     margin-bottom: 10px;
 `
 
 const ProfileJob = styled.div`
     font-family: "assistant-regular";
-    font-size: 28px;
-    margin-bottom: 50px;
+    font-size: 19px;
+    margin-bottom: 4rem;
 `
 
 const ProfileTags = styled.div`
-    font-family: "assistant-medium";
-    font-size: 30px;
+    font-family: "assistant-light";
+    font-size: 20px;
+
 `
 
+const Tag = styled.span`
+    width: 2rem;
+    background-color: #d9d9d9;
+    margin-right: 0.8rem;
+    text-align: center;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 5px;
+`;
+
 const PhotoContainer = styled.div`
-    width: 40%;
-    height: 75%;
-    border: 1px solid #707070;
+    width: 50%;
+    height: 100%;
+    margin-left: auto;
+    border: none;
     border-radius: 15px;
-    margin: 30px;
     background-color: #d9d9d9;
     object-fit: fill;
 `
@@ -74,7 +93,7 @@ const Card = ({ card }) => {
                     <ProfileJob>{card.job}</ProfileJob>
                     <ProfileTags>
                         {card.tags.map((tag) => (
-                            <span>{tag} </span>
+                            <Tag>{tag} </Tag>
                         ))}
                     </ProfileTags>
                 </ProfileContainer>
@@ -82,9 +101,9 @@ const Card = ({ card }) => {
                     <PhotoImage src={card.imgUrl}></PhotoImage>
                 </PhotoContainer>
             </CardContainer>
-            <Item modalOn={itemModalOn} card={card} top={250} left={300} itemRef={itemRef} />
+            <NameCardModal modalOn={itemModalOn} card={card} top={250} left={300} itemRef={itemRef} />
         </div>
     )
 }
 
-export default Card
+export default Card;
