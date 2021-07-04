@@ -8,7 +8,7 @@ const PopupConatiner = styled.div`
     left: 0;
     bottom: 0;
     background: rgba(200, 200, 200, 0.4);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
     z-index: 4;
     box-shadow: rgba(0, 0, 0, 0.7) 0 0 0 9999px;
 `;
@@ -31,7 +31,8 @@ const ItemContainer = styled.div`
 const PhotoContainer = styled.div`
     width: 40%;
     height: 40%;
-    margin: 30px;
+    margin-left: 3rem;
+    margin-top: 2rem;
     border: none;
     border-radius: 15px;
     background-color: #d9d9d9;
@@ -47,18 +48,21 @@ const PhotoImage = styled.img`
 
 const ProfileContainer = styled.div`
     width: 40%;
-    height: 40%;
-    margin: 30px;
+    height: 35%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+
 `;
 
 const ProfileName = styled.div`
     font-family: 'assistant-semibold';
-    font-size: 40px;
+    font-size: 30px;
 `;
 
 const ProfileJob = styled.div`
     font-family: 'assistant-regular';
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 20px;
 `;
 
@@ -69,21 +73,48 @@ const hover = css`
         cursor: pointer;
     }
 `;
+const ColorTab = styled.div`
+    padding: 0.1rem;
+    transition: width 0.2s linear;
+    background-color: #d9d9d9;
+    width: 4.3rem;
+    border-radius: 8px;
+    &:hover {
+        width: 18rem;
+        cursor: pointer;
+    }
 
-const ProfilePhone = styled.div`
-    font-family: 'assistant-medium';
-    font-size: 30px;
-    margin-bottom: 10px;
-    padding: 0px 10px;
-    ${hover}
 `;
 
-const ProfileEmail = styled.div`
-    font-family: 'assistant-medium';
-    padding: 0px 10px;
-    font-size: 30px;
-    ${hover}
+const InfoTab = styled.div`
+    margin: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    z-index: 5;
 `;
+
+
+const InfoName = styled.div`
+    text-align: center;
+    background-color: transparent;
+    font-family: 'assistant-medium';
+    font-size: 22px;
+    width: 22%;
+    margin: 0.2rem;
+
+`;
+
+const PersonalInfo = styled.div`
+    font-family: 'assistant-regular';
+    background-color: transparent;
+    font-size: 20px;
+    margin: 0.2rem;
+    margin-left: 5rem;
+    z-index: 6;
+    position: fixed;
+`;
+
+
 
 const TagsContainer = styled.div`
     width: 100%;
@@ -93,12 +124,26 @@ const TagsContainer = styled.div`
 
 const TagsName = styled.div`
     font-family: 'assistant-semibold';
-    font-size: 34px;
+    font-size: 25px;
+    padding: 0.2rem;
+    margin-bottom: 0.5rem;
 `;
 
 const TagsContents = styled.div`
-    font-family: 'assistant-medium';
-    font-size: 30px;
+    font-family: 'assistant-regular';
+    font-size: 20px;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+`;
+
+const Tag = styled.div`
+    width: auto;
+    height: 1.5rem;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0.75rem;
+    border-radius: 8px;
+    background-color: #d9d9d9;
 `;
 
 const NotesContainer = styled.div`
@@ -109,12 +154,15 @@ const NotesContainer = styled.div`
 
 const NotesName = styled.div`
     font-family: 'assistant-semibold';
-    font-size: 34px;
+    font-size: 25px;
+    padding: 0.2rem;
+    margin-bottom: 0.5rem;
 `;
 
 const NotesContents = styled.div`
-    font-family: 'assistant-medium';
-    font-size: 30px;
+    font-family: 'assistant-regular';
+    font-size: 20px;
+    padding: 0.3rem;
 `;
 
 const NameCardModal = ({ modalOn, card, top, left, itemRef }) => {
@@ -159,14 +207,28 @@ const NameCardModal = ({ modalOn, card, top, left, itemRef }) => {
                         <ProfileContainer>
                             <ProfileName>{card.name}</ProfileName>
                             <ProfileJob>{card.job}</ProfileJob>
-                            <ProfilePhone>Phone: {card.phone}</ProfilePhone>
-                            <ProfileEmail>Email: {card.email}</ProfileEmail>
+
+                            <InfoTab>
+                                <ColorTab>
+                                <InfoName>Phone</InfoName>
+                                </ColorTab>
+                                <PersonalInfo>{card.phone}</PersonalInfo>
+                            </InfoTab>
+
+                            <InfoTab>
+                                <ColorTab>
+                                <InfoName>Email</InfoName>
+                                </ColorTab>
+                                <PersonalInfo>{card.email}</PersonalInfo>
+                            </InfoTab>
+
                         </ProfileContainer>
+
                         <TagsContainer>
                             <TagsName>Tags</TagsName>
                             <TagsContents>
                                 {card.tags.map((tag) => (
-                                    <span>{tag} </span>
+                                    <Tag>{tag}</Tag>
                                 ))}
                             </TagsContents>
                         </TagsContainer>

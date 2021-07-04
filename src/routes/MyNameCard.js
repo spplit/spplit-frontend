@@ -3,7 +3,6 @@ import axios from 'axios';
 import AddCard from '../components/AddCard';
 import useDetectAddClick from '../components/useDetectAddClick';
 import styled from "styled-components"
-import Card from '../components/Card';
 
 const CardContainer = styled.div`
     display: flex;

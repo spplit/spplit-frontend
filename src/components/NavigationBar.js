@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import arrowRight from '../styles/images/arrowRight.png';
 import axios from 'axios';
-import List from './List';
 import Search from './Search';
 
 

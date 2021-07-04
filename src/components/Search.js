@@ -83,10 +83,10 @@ const Search = ({filter}) => {
     const throttleScroll = throttle(handleScroll, 50);
 
     useEffect(() => {
-        documentRef.current.addEventListener("scroll", throttleScroll);
-        })
+        documentRef.current.addEventListener('scroll', throttleScroll);
         return () => documentRef.current.removeEventListener("scroll", throttleScroll);
     }, [pageY]);
+
 
     
     // Enter시 btn클릭과 동일효과

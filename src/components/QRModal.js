@@ -25,7 +25,7 @@ const Modal = styled.div`
     bottom: 0;
     background: rgba(200, 200, 200, 0.6); 
     z-index: 3;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
 `
 const SizeupModal = styled.div`
     position: fixed;
@@ -36,7 +36,8 @@ const SizeupModal = styled.div`
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6); 
+    background: rgba(200, 200, 200, 0.6);
+    backdrop-filter: blur(6px);
     z-index: 3;
 `
 const QRcontainer = styled.div`
