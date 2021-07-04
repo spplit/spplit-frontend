@@ -92,7 +92,9 @@ const throttle = function (callback, waitTime) {
     }
 }
 
-
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`;
 
 const Header = () => {
     const [name, setName] = useState('Mango');
@@ -135,10 +137,12 @@ const Header = () => {
             <HeaderArea>
                 <HeaderContainer className={hide && 'hide'}>
                     <HeaderItemContainer>
-                    <LogoContainer onClick={ logoClick }>
-                        <LogoImage src={ logoimg } />
-                        <LogoName>Spplit!</LogoName>
-                    </LogoContainer>
+                    <StyledLink to="/main">
+                        <LogoContainer onClick={ logoClick }>
+                            <LogoImage src={ logoimg } />
+                            <LogoName>Spplit!</LogoName>
+                        </LogoContainer>
+                    </StyledLink>
                     <ProfileContainer>
                         <ProfileName>{ name }'s Spplit!</ProfileName>
                         <ProfileImage onClick={ profileHandler }></ProfileImage>
