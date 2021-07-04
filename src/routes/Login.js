@@ -75,6 +75,7 @@ const Input = styled.input `
     width: 75%;
     height: 25px;
     border: none;
+    padding: 0 0.5rem;
     box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.2);
     &:hover {
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
