@@ -43,9 +43,17 @@ const ProfileItemButton = styled.button `
     border: none;
     width: 100%;
     height: 30%;
+    margin-top: 0.6rem;
+    &:hover {
+        
+        cursor: pointer;
+    }
+`;
+
+const StyledLink = styled(Link) `
+    transition: 0.2s;
     &:hover {
         background-color: #bebebe;
-        cursor: pointer;
     }
 `;
 
@@ -70,11 +78,11 @@ const ProfileModal = ({modalOn, top, right, profileRef}) => {
     const profileList = profileItems.map((item, id) => {
         return(
             // 내 명함 등록하는 페이지로 넘어가는 링크인데 링크를 걸면 배경이...옹졸해짐
-            // <Link to ={ item.url } style={{height: '100%'}}>
+            <StyledLink to ={ item.url } style={{height: '100%'}}>
                 <ProfileItemButton id={id}>
                     { item.name }
                 </ProfileItemButton>
-            // </Link>
+            </StyledLink>
         )
     })
 
