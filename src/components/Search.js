@@ -17,8 +17,8 @@ const SearchContainer = styled.div`
     height : 3vw;
     position: fixed;
     z-index : 1;
-    padding-top: 0.3rem;
-    padding-bottom: 0.7rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     transition: 0.4s ease;
     &.hide {
         transform: translateY(-6rem);
@@ -142,7 +142,7 @@ const Search = () => {
     return (
         <div>
             <SearchArea>
-                <SearchContainer>
+                <SearchContainer className={hide && 'hide'}>
                     <SearchContents placeholder="검색해보세요!" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={onEnterPress}/>
                     <SearchButton src={searchImg} onClick={btnClick} />
                 </SearchContainer>
