@@ -23,14 +23,14 @@ function Main() {
     //     };
     // }, []);
   
-    const [cardList, setCardList] = useState([]);
+    // const [cardList, setCardList] = useState([]);
     const { modalOn, qrButtonRef, modalRef, sizeUp, setSizeUp } = useDetectQrClick();
 
 
     return (
         <div>
             <Header />
-            <Search />
+            {/* <Search /> */}
             <QRFloating bottom={55} right={40} qrButtonRef={qrButtonRef} />
             <QRModal modalOn={modalOn} sizeUp={sizeUp} setSizeUp={setSizeUp} bottom={55} right={40} modalRef={modalRef} />
             {/* <ScrollupFloating bottom={50} right={40} /> */}

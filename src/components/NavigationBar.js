@@ -2,6 +2,10 @@ import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import arrowRight from '../styles/images/arrowRight.png';
+import axios from 'axios';
+import List from './List';
+import Search from './Search';
+
 
 const NavContainer = styled.div`
     background-color: white;
@@ -73,6 +77,13 @@ const MyQRContainer = styled.div`
 
 function NavigationBar() {
     const [clicked, setClicked] = useState(0);
+    const [cardList, setCardList] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/cards').then((res) => {
+            setCardList(res.data)
+        })
+    }, []) 
 
     const isOn = (event) => {
         setClicked(event.target.id);
@@ -83,7 +94,7 @@ function NavigationBar() {
         (event) => {
             if (clicked !== null) {
                 let clickedButton = document.getElementById(clicked);
-                console.log(clicked);
+                // console.log(clicked);
             }
         }, [clicked]
     );
@@ -106,8 +117,19 @@ function NavigationBar() {
     const buttonList = buttons.map((button, id) => {
         return (<NavButton id={id} active={clicked === id} onClick={() => setClicked(id)}>{button.name}</NavButton>)
     })
+
+    const filter = cardList.filter((data)=>{
+    
+        if (buttons[clicked]["name"].toLowerCase() == data.division.toLowerCase()) {
+            return data
+        }
+
+    })
+
+
     return (
         <div>
+            <Search cardList={cardList} setCardList={setCardList} filter={filter}/>
             <NavContainer>
                 <NavItemContainer>
                     {buttonList}
@@ -117,6 +139,7 @@ function NavigationBar() {
                 </NavItemContainer>
                 <MyQRContainer></MyQRContainer>
             </NavContainer>
+            {/* <List result={result}/> */}
         </div>
     )
 }
