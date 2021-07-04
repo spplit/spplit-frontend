@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
-import AddCard from '../components/AddCard';
+import AddNameCardModal from '../components/AddNameCardModal';
 import useDetectAddClick from '../components/useDetectAddClick';
 import styled from "styled-components";
 import Header from "../components/Header";
@@ -154,7 +154,7 @@ function MyNameCard() {
                     <AddButton onClick={addHandler}>+</AddButton>
                 </AddButtonContainer>
             
-            <AddCard addModalOn={addModalOn} setAddModalOn={setAddModalOn} myCard={myCard} setMyCard={setMyCard} addRef={addRef}/>
+            <AddNameCardModal addModalOn={addModalOn} setAddModalOn={setAddModalOn} myCard={myCard} setMyCard={setMyCard} addRef={addRef}/>
             {myCard.map((myCard) => 
                 <CardContainer id={myCard.id}>
                     <ProfileContainer>
