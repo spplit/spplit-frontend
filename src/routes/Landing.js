@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import logoimg from '../styles/images/spplit_logo.png';
 import appleLogo from '../styles/images/appleLogo.png';
 import windowsLogo from '../styles/images/windowsLogo.png';
+import LandingImange from '../styles/images/SpplitLanding.png';
 
 const OuterContainer = styled.div`
     width: 100%;
@@ -57,12 +58,19 @@ const LinkContainer = styled.div`
 `;
 
 const LandingLink = styled.button`
+    margin-right: 0.8rem;
+    width: 6rem;
+    height: 2rem;
     font-family: "assistant-semibold";
     border: none;
+    border-radius: 15px;
     background-color: transparent;
     font-size: 20px;
+    transition: 0.2s;
     &:hover {
         cursor: pointer;
+        background-color: #29548e;
+        color: white;
     }
     
 `;
@@ -76,7 +84,17 @@ const MainBox = styled.div`
 
 const ImageBox = styled.div`
     width: 50%;
-    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`;
+
+const Image = styled.img`
+    margin: auto;
+    display: inline-block;
+    width: 55rem;
+    margin-left: 15rem;
 `;
 
 const TextBox = styled.div`
@@ -119,9 +137,10 @@ const DownloadButton = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
+    transition: 0.2s;
     &:hover {
         cursor: pointer;
-        box-shadow: 3px #d9d9d9;
+        background-color: #4672af;
     }
 `;
 
@@ -157,7 +176,9 @@ function Landing() {
                 </HeaderItemContainer>
                 </HeaderContainer>
                 <MainBox>
-                    <ImageBox></ImageBox>
+                    <ImageBox>
+                        <Image src={ LandingImange } />
+                    </ImageBox>
                     <TextBox>
                         <MainText>
                             Still Not Spplitting?
