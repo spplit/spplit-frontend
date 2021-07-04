@@ -22,12 +22,10 @@ const ItemContainer = styled.div`
     background-color: #ffffff;
     border: none;
     border-radius: 50px;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.15);
     z-index: 1;
     top: ${(props) => `${props.top}px`};
     left: ${(props) => `${props.left}px`};
-    &:active {
-        box-shadow: 1px 1px 2px #999;
-    }
 `;
 
 const PhotoContainer = styled.div`
@@ -120,6 +118,22 @@ const NotesContents = styled.div`
 `;
 
 const NameCardModal = ({ modalOn, card, top, left, itemRef }) => {
+
+    // useEffect(() => {
+    //     document.body.style.overflow = "hidden";
+    //     return () => {
+    //         document.body.style.overflow = "unset";
+    //     }
+    // }, [])
+    
+    // const scrollPrevention = () => {
+    //     if (modalOn) {
+    //         document.body.style.overflow = "hidden";
+    //     } else {
+    //         document.body.style.overflow = "unset";
+    //     }
+    // }
+
     // 모달이 켜지면 뒤에 스크롤 방지하는 기능
     // useEffect(() => {
     //     document.body.style.cssText = `

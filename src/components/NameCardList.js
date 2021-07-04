@@ -5,10 +5,16 @@ import styled from 'styled-components';
 
 const ListContainer = styled.ul`
     position: absolute;
-    margin-top: 17vh;
+    margin-top: 10vh;
     margin-left: 10vw;
     width: 100%;
     height: 100%;
+`;
+
+const LastCard = styled.div`
+    width: 100%;
+    height: 9rem;
+    background-color: transparent;
 `;
 
 const List = ({ result }) => {
@@ -22,11 +28,15 @@ const List = ({ result }) => {
     // }, [])
 
     return (
-        <ListContainer>
-            {result.map((card) => (
-                <Card key={card.id} card={card} />
-            ))}
-        </ListContainer>
+        <div>
+            <ListContainer>
+                {result.map((card) => (
+                    <Card key={card.id} card={card} />
+                ))}
+                <LastCard />
+            </ListContainer>
+            
+        </div>
     );
 };
 

@@ -1,18 +1,30 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import logoimg from '../styles/images/spplit_logo.png';
 import ProfileModal from './ProfileModal';
 import useDetectProfileClick from './useDetectProfileClick';
 
+const HeaderArea = styled.div`
+    position: relative;
+    width: 100%;
+    height: 6rem;
+`;
+
 const HeaderContainer = styled.div`
-    background-color: #ffffff;
+    background-color: white;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     position: fixed;
     width: 100%;
     height: 6rem;
     z-index : 1;
+    transition: 0.4s ease;
+    &.hide {
+        transform: translateY(-6rem);
+    }
 `;
 
 const HeaderItemContainer = styled.div`
@@ -64,46 +76,77 @@ const ProfileImage = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 70%;
-    /* bottom:${(props) => `${props.bottom}px`};
-	right:${(props) => `${props.right}px`}; */
     &:hover {
         cursor: pointer;
     }
 `;
 
+const throttle = function (callback, waitTime) {
+    let timerId = null;
+    return (e) => {
+        if (timerId) return;
+        timerId = setTimeout(() => {
+            callback.call(this, e);
+            timerId = null;
+        }, waitTime);
+    }
+}
+
 
 
 const Header = () => {
+    const [name, setName] = useState('Mango');
+    const [hide, setHide] = useState(false);
+    const [pageY, setPageY] = useState(0);
+    const documentRef = useRef(document);
 
     const [profileModalOn, setProfileModalOn] = useState(false);
     const { profileRef } = useDetectProfileClick(profileModalOn, setProfileModalOn);
-
-    const profileHandler = () => {
-        setProfileModalOn(true)
-    }
-
-
-    const [name, setName] = useState('Mango');
 
     const logoClick = () => {
         console.log("warping to main page...")
     }
 
+    const profileHandler = () => {
+        console.log("clicked")
+        setProfileModalOn(true)
+        
+    }
+
+    const handleScroll = () => {
+        const { pageYOffset } = window;
+        const deltaY = pageYOffset - pageY;
+        const hide = pageYOffset !== 0 && deltaY >= 0;
+        setHide(hide);
+        setPageY(pageYOffset);
+    }
+
+    const throttleScroll = throttle(handleScroll, 50);
+
+    useEffect(() => {
+        documentRef.current.addEventListener("scroll", throttleScroll);
+        return () => documentRef.current.removeEventListener("scroll", throttleScroll);
+    }, [pageY]);
+
+
+
     return (
         <div>
-            <HeaderContainer>
-                <HeaderItemContainer>
-                <LogoContainer onClick={ logoClick }>
-                    <LogoImage src={ logoimg } />
-                    <LogoName>Spplit!</LogoName>
-                </LogoContainer>
-                <ProfileContainer>
-                    <ProfileName>{ name }'s Spplit!</ProfileName>
-                    <ProfileImage onclick={ profileHandler }></ProfileImage>
-                </ProfileContainer>
-                </HeaderItemContainer>
-            </HeaderContainer>
-            <ProfileModal modalOn={ profileModalOn } top={ 200 } right={ 200 } profileRef={ profileRef }/>
+            <HeaderArea>
+                <HeaderContainer className={hide && 'hide'}>
+                    <HeaderItemContainer>
+                    <LogoContainer onClick={ logoClick }>
+                        <LogoImage src={ logoimg } />
+                        <LogoName>Spplit!</LogoName>
+                    </LogoContainer>
+                    <ProfileContainer>
+                        <ProfileName>{ name }'s Spplit!</ProfileName>
+                        <ProfileImage onClick={ profileHandler }></ProfileImage>
+                    </ProfileContainer>
+                    </HeaderItemContainer>
+                </HeaderContainer>
+                <ProfileModal modalOn={ profileModalOn } top={ 85 } right={ 45 } profileRef={ profileRef }/>
+            </HeaderArea>
         </div>
     )
 };

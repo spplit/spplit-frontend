@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import searchImg from "../styles/images/search.png";
 import List from './NameCardList';
+
+const SearchArea = styled.div`
+    position: relative;
+    width: 100vw;
+    height: 3vw;
+`;
 
 const SearchContainer = styled.div`
     display : inline-block;
@@ -10,8 +16,13 @@ const SearchContainer = styled.div`
     width : 100vw;
     height : 3vw;
     position: fixed;
-    margin-top : 5vw;
     z-index : 1;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    transition: 0.4s ease;
+    &.hide {
+        transform: translateY(-6rem);
+    }
 `;
 
 const SearchContents = styled.input`
@@ -44,15 +55,41 @@ const SearchButton = styled.img`
     }
 `; 
 
+const throttle = function (callback, waitTime) {
+    let timerId = null;
+    return (e) => {
+        if (timerId) return;
+        timerId = setTimeout(() => {
+            callback.call(this, e);
+            timerId = null;
+        }, waitTime);
+    }
+}
+
 const Search = () => {
-    const [cardList, setCardList] = useState([])
-    const [query, setQuery] = useState(null)
+    const [cardList, setCardList] = useState([]);
+    const [query, setQuery] = useState(null);
+    const [hide, setHide] = useState(false);
+    const [pageY, setPageY] = useState(0);
+    const documentRef = useRef(document);
+
+    const handleScroll = () => {
+        const { pageYOffset } = window;
+        const deltaY = pageYOffset - pageY;
+        const hide = pageYOffset !== 0 && deltaY >= 0;
+        setHide(hide);
+        setPageY(pageYOffset);
+    }
+
+    const throttleScroll = throttle(handleScroll, 50);
 
     useEffect(() => {
+        documentRef.current.addEventListener("scroll", throttleScroll);
         axios.get('http://localhost:8080/cards').then((res) => {
             setCardList(res.data)
         })
-    }, []) 
+        return () => documentRef.current.removeEventListener("scroll", throttleScroll);
+    }, [pageY]);
     
     // Enter시 btn클릭과 동일효과
     const onEnterPress = (e) => {
@@ -104,11 +141,13 @@ const Search = () => {
 
     return (
         <div>
-            <SearchContainer>
-                <SearchContents placeholder="검색해보세요!" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={onEnterPress}/>
-                <SearchButton src={searchImg} onClick={btnClick} />
-            </SearchContainer>
-            <List result={result}/>
+            <SearchArea>
+                <SearchContainer className={hide && 'hide'}>
+                    <SearchContents placeholder="검색해보세요!" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={onEnterPress}/>
+                    <SearchButton src={searchImg} onClick={btnClick} />
+                </SearchContainer>
+                <List result={result}/>
+            </SearchArea>
         </div>
     )
 }
