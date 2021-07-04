@@ -37,15 +37,15 @@ const SearchButton = styled.img`
     }
 `; 
 
-const Search = () => {
-    const [cardList, setCardList] = useState([])
+const Search = ({filter}) => {
+    // const [cardList, setCardList] = useState([])
     const [query, setQuery] = useState(null)
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/cards').then((res) => {
-            setCardList(res.data)
-        })
-    }, []) 
+    // useEffect(() => {
+    //     axios.get('http://localhost:8080/cards').then((res) => {
+    //         setCardList(res.data)
+    //     })
+    // }, []) 
     
     // Enter시 btn클릭과 동일효과
     const onEnterPress = (e) => {
@@ -68,7 +68,7 @@ const Search = () => {
         // get()
     }
 
-    const result = cardList.filter((data)=>{
+    const result = filter.filter((data)=>{
 
         const tagCheck = (query, tagList) => {
             let x = false;
