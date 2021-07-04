@@ -167,35 +167,16 @@ const NotesContents = styled.div`
 
 const NameCardModal = ({ modalOn, card, top, left, itemRef }) => {
 
-    // useEffect(() => {
-    //     document.body.style.overflow = "hidden";
-    //     return () => {
-    //         document.body.style.overflow = "unset";
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (modalOn) {
+            document.body.style.overflow = 'hidden';
+        }
+        else if (!modalOn) {
+            document.body.style.overflow = 'unset';
+        }
+     }, [modalOn]);
+
     
-    // const scrollPrevention = () => {
-    //     if (modalOn) {
-    //         document.body.style.overflow = "hidden";
-    //     } else {
-    //         document.body.style.overflow = "unset";
-    //     }
-    // }
-
-    // 모달이 켜지면 뒤에 스크롤 방지하는 기능
-    // useEffect(() => {
-    //     document.body.style.cssText = `
-    //       position: fixed; 
-    //       top: -${window.scrollY}px;
-    //       overflow-y: scroll;
-    //       width: 100%;`;
-    //     return () => {
-    //         const scrollY = document.body.style.top;
-    //         document.body.style.cssText = '';
-    //         window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-    //     };
-    // }, []);
-
     return (
         <div>
             {modalOn && (
