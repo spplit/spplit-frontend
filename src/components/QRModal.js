@@ -84,6 +84,15 @@ function QRModal({ modalOn, sizeUp, setSizeUp, bottom, right, modalRef }) {
         setSizeUp(false)
     }
 
+    useEffect(() => {
+        if (modalOn) {
+            document.body.style.overflow = 'hidden';
+        }
+        else if (!modalOn) {
+            document.body.style.overflow = 'unset';
+        }
+     }, [modalOn]);
+
     //moalOn&&sizeUp : true > 큰 사이즈 modal
     //modalOn : true, sizeUp : false > 작은 사이즈 modal
     //modalOn : false > modal X
